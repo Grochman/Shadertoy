@@ -6,6 +6,9 @@
 #include <sstream>
 #include "functions.h"
 
+#define WINDOW_HEIGHT 600
+#define WINDOW_WIDTH 600
+
 int main(void)
 {
     GLFWwindow* window;
@@ -13,7 +16,7 @@ int main(void)
     if (!glfwInit())
         return -1;
 
-    window = glfwCreateWindow(600, 600, "Hello World", NULL, NULL);
+    window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Hello World", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -25,13 +28,8 @@ int main(void)
         return -1;
     std::cout << glGetString(GL_VERSION);
     
-    float possitions[8] = {
-        -0.9f, -0.9f,
-        -0.9f,  0.9f,
-         0.9f,  0.9f,
-         0.9f, -0.9f
-    };
-    float possitions2[8] = {
+
+   float possitions[8] = {
         -1.0f, -1.0f,
         -1.0f,  1.0f,
          1.0f,  1.0f,
@@ -40,7 +38,7 @@ int main(void)
     unsigned int buffer;
     glCreateBuffers(1, &buffer); //create buf
     glBindBuffer(GL_ARRAY_BUFFER, buffer); //bind
-    glBufferData(GL_ARRAY_BUFFER, sizeof(possitions2), possitions2, GL_STATIC_DRAW); //load data
+    glBufferData(GL_ARRAY_BUFFER, sizeof(possitions), possitions, GL_STATIC_DRAW); //load data
     glVertexAttribPointer(0,2,GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0); //data layout
     glEnableVertexAttribArray(0); //idk
 
@@ -55,12 +53,15 @@ int main(void)
     
     unsigned int shader = CreateShader(vertexShader, fragmentShader2);
     glUseProgram(shader);
+
+    int timeLocation = glGetUniformLocation(shader, "u_time");
+    int windowResolutionLocation = glGetUniformLocation(shader, "u_resolution");
+    glUniform2f(windowResolutionLocation, float(WINDOW_WIDTH), float(WINDOW_HEIGHT));
+
     while (!glfwWindowShouldClose(window))
     {
         float timeValue = glfwGetTime();
-        int timeLocation = glGetUniformLocation(shader, "iTime");
         glUniform1f(timeLocation, timeValue);
-
 
         glClear(GL_COLOR_BUFFER_BIT);
         

@@ -1,13 +1,14 @@
 #version 330 core
          
-uniform float iTime;
-        
+uniform float u_time;
+uniform vec2 u_resolution;
+
 void main()
 {
-    vec2 uv = gl_FragCoord.xy / vec2(600.0, 600.0);
+    vec2 uv = gl_FragCoord.xy / u_resolution.xy;
     uv = uv * 3 - vec2(2.5, 1.5);
-    uv.x = (uv.x - 0.5) / iTime + 0.5;
-    uv.y = (uv.y - 0.5) / iTime + 0.5;
+    uv.x = (uv.x - 0.5) / u_time + 0.5;
+    uv.y = (uv.y - 0.5) / u_time + 0.5;
 
     vec2 z = vec2(0.0, 0.0);
     float r = 0.0;
