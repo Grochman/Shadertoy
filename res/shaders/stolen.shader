@@ -2,6 +2,7 @@
         
 uniform float u_time;
 uniform vec2 u_resolution;
+uniform vec2 u_mouse;
 
 vec3 palette( float t ) {
     vec3 a = vec3(0.5, 0.5, 0.5); 
@@ -13,7 +14,6 @@ vec3 palette( float t ) {
 
 void main()
 {
-    //vec2 uv = gl_FragCoord.xy / vec2(600.0, 600.0);
     vec2 uv = gl_FragCoord.xy / u_resolution.xy;
     
     uv = uv * 2.0 - 1.0;

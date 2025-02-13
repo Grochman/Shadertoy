@@ -1,4 +1,4 @@
-#include <GL/glew.h>
+#include <GL/glew.h>gir
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <fstream>
@@ -45,23 +45,31 @@ int main(void)
 
     std::string vertexShader;
     ReadShader("res/shaders/plane_vert.shader", vertexShader);
-    std::string fragmentShader;
-    ReadShader("res/shaders/mandelbrot_set_frag.shader", fragmentShader);
-    std::string fragmentShader2;
-    ReadShader("res/shaders/stolen.shader", fragmentShader2);
+    std::string mandelbrot;
+    ReadShader("res/shaders/mandelbrot_set_frag.shader", mandelbrot);
+    std::string stolen;
+    ReadShader("res/shaders/stolen.shader", stolen);
+    std::string tbos;
+    ReadShader("res/shaders/the_book_of_shaders_frag.shader", tbos);
 
     
-    unsigned int shader = CreateShader(vertexShader, fragmentShader2);
+    unsigned int shader = CreateShader(vertexShader, tbos);
     glUseProgram(shader);
 
     int timeLocation = glGetUniformLocation(shader, "u_time");
-    int windowResolutionLocation = glGetUniformLocation(shader, "u_resolution");
-    glUniform2f(windowResolutionLocation, float(WINDOW_WIDTH), float(WINDOW_HEIGHT));
+    int resolutionLocation = glGetUniformLocation(shader, "u_resolution");
+    glUniform2f(resolutionLocation, float(WINDOW_WIDTH), float(WINDOW_HEIGHT));
+    int mouseLocation = glGetUniformLocation(shader, "u_mouse");
+    
+    double mousexpos, mouseypos;
 
     while (!glfwWindowShouldClose(window))
     {
         float timeValue = glfwGetTime();
         glUniform1f(timeLocation, timeValue);
+
+        glfwGetCursorPos(window, &mousexpos, &mouseypos);
+        glUniform2f(mouseLocation, float(mousexpos), float(mouseypos));
 
         glClear(GL_COLOR_BUFFER_BIT);
         

@@ -147,6 +147,7 @@
     <None Include="res\shaders\mandelbrot_set_frag.shader" />
     <None Include="res\shaders\plane_vert.shader" />
     <None Include="res\shaders\stolen.shader" />
+    <None Include="res\shaders\the_book_of_shaders_frag.shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\functions.h" />
