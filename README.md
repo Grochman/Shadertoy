@@ -1,1 +1,2 @@
-# Project2
+# Shadertoy
+Simple OpenGL shader art environment
