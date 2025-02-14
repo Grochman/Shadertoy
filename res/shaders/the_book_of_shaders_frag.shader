@@ -50,7 +50,8 @@ void main()
     mp.y = 1-mp.y;
     vec2 center = vec2(0.5,0.5);
     center = fract(st*2);
-    
+    //center = mp;
+
     float dist = distance(st, center);
     dist += u_time*0.1;
     dist = abs(sin(dist*50));

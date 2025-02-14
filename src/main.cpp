@@ -9,6 +9,38 @@
 #define WINDOW_HEIGHT 600
 #define WINDOW_WIDTH 600
 
+
+void run(GLFWwindow* window, const std::string& vertexShader, const std::string& fragmentShader) {
+    unsigned int shader = CreateShader(vertexShader, fragmentShader);
+    glUseProgram(shader);    
+    
+    int timeLocation = glGetUniformLocation(shader, "u_time");
+    int resolutionLocation = glGetUniformLocation(shader, "u_resolution");
+    glUniform2f(resolutionLocation, float(WINDOW_WIDTH), float(WINDOW_HEIGHT));
+    int mouseLocation = glGetUniformLocation(shader, "u_mouse");
+
+    double mousexpos, mouseypos;
+
+    while (!glfwWindowShouldClose(window))
+    {
+        float timeValue = glfwGetTime();
+        glUniform1f(timeLocation, timeValue);
+
+        glfwGetCursorPos(window, &mousexpos, &mouseypos);
+        glUniform2f(mouseLocation, float(mousexpos), float(mouseypos));
+
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+
+        glfwSwapBuffers(window);
+
+        glfwPollEvents();
+    }
+
+    glDeleteProgram(shader);
+}
+
 int main(void)
 {
     GLFWwindow* window;
@@ -43,8 +75,8 @@ int main(void)
     glEnableVertexAttribArray(0); //idk
 
 
-    std::string vertexShader;
-    ReadShader("res/shaders/plane_vert.shader", vertexShader);
+    std::string square;
+    ReadShader("res/shaders/plane_vert.shader", square);
     std::string mandelbrot;
     ReadShader("res/shaders/mandelbrot_set_frag.shader", mandelbrot);
     std::string stolen;
@@ -53,34 +85,8 @@ int main(void)
     ReadShader("res/shaders/the_book_of_shaders_frag.shader", tbos);
 
     
-    unsigned int shader = CreateShader(vertexShader, tbos);
-    glUseProgram(shader);
+    run(window, square, tbos);
 
-    int timeLocation = glGetUniformLocation(shader, "u_time");
-    int resolutionLocation = glGetUniformLocation(shader, "u_resolution");
-    glUniform2f(resolutionLocation, float(WINDOW_WIDTH), float(WINDOW_HEIGHT));
-    int mouseLocation = glGetUniformLocation(shader, "u_mouse");
-    
-    double mousexpos, mouseypos;
-
-    while (!glfwWindowShouldClose(window))
-    {
-        float timeValue = glfwGetTime();
-        glUniform1f(timeLocation, timeValue);
-
-        glfwGetCursorPos(window, &mousexpos, &mouseypos);
-        glUniform2f(mouseLocation, float(mousexpos), float(mouseypos));
-
-        glClear(GL_COLOR_BUFFER_BIT);
-        
-        glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
-        
-        glfwSwapBuffers(window);
-
-        glfwPollEvents();
-    }
-
-    glDeleteProgram(shader);
     
     glfwTerminate();
     return 0;
