@@ -22,5 +22,6 @@ void main()
             break;
         }  
     }
+    //r = step(2.0, length(z));
     gl_FragColor = vec4(r,0.0,0.0,1.0);
 };

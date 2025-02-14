@@ -20,12 +20,12 @@ void run(GLFWwindow* window, const std::string& vertexShader, const std::string&
     int mouseLocation = glGetUniformLocation(shader, "u_mouse");
 
     double mousexpos, mouseypos;
-
+    
     while (!glfwWindowShouldClose(window))
     {
         float timeValue = glfwGetTime();
         glUniform1f(timeLocation, timeValue);
-
+    
         glfwGetCursorPos(window, &mousexpos, &mouseypos);
         glUniform2f(mouseLocation, float(mousexpos), float(mouseypos));
 
@@ -86,7 +86,7 @@ int main(void)
 
     
     run(window, square, tbos);
-
+    
     
     glfwTerminate();
     return 0;
