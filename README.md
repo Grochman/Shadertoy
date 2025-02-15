@@ -9,6 +9,7 @@ Minimalistic environment using OpenGL, GLEW, and GLFW for GLSL shader art develo
 - Julia set
 - Heart beat
 - Black - white hole
+- sphere
 
 ### Resources
 - Basic framework based on https://www.youtube.com/@TheCherno

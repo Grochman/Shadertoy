@@ -29,3 +29,7 @@ float circle(in vec2 st, in vec2 center, in float r, in float s){
     float dist = distance(st, center);    
     return smoothstep(dist,dist+s, r);
 }
+
+float ring(vec2 st, vec2 center, float r, float depth){
+    return circle(st,center, r) * (1-circle(st, center, r-depth));
+}

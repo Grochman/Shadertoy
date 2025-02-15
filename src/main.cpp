@@ -82,10 +82,11 @@ int main(void)
     std::string tbos = ReadShader("res/shaders/the_book_of_shaders_frag.shader");
     std::string black_white_hole = ReadShader("res/shaders/black_white_hole_frag.shader");
     std::string heart = ReadShader("res/shaders/heart_beat_frag.shader");
+    std::string sphere = ReadShader("res/shaders/sphere_frag.shader");
+    
+    run(window, square, sphere);
+    
 
-    run(window, square, julia);
-    
-    
     glfwTerminate();
     return 0;
 }
