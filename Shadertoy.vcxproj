@@ -144,6 +144,9 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\shaders\black_white_hole_frag.shader" />
+    <None Include="res\shaders\heart_beat_frag.shader" />
+    <None Include="res\shaders\julia_set_frag.shader" />
     <None Include="res\shaders\mandelbrot_set_frag.shader" />
     <None Include="res\shaders\plane_vert.shader" />
     <None Include="res\shaders\stolen.shader" />

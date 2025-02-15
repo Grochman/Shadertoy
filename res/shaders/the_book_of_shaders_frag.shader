@@ -45,24 +45,12 @@ void main()
     vec2 mp = u_mouse/u_resolution;
     mp.y = 1-mp.y;
     
-    //boxes
-    vec3 red = vec3(1.,0.,0.);
-    vec3 blue = vec3(0.,0.,1.);
-    vec3 yellow = vec3(1.,1.,0.);
-    vec3 red_box = rect(st, vec4(0.,0.7,0.2,1.)) * red;
-    vec3 yellow_box = rect(st, vec4(0.8,0.7,1.,1.)) * yellow;
-    
+    vec2 pos = vec2(0.5) - st;
 
-    //heartbeat
-    float time = fract(u_time);
-    float t = step(time, 0.5)*(time*2.*PI);
+    float r = length(pos)*2.5;
 
-    float t1 = (sin(t)*sin(t*3+2)+1)*0.125 + 0.15;
-    
-    float circle = circle(st, mp, t1);
-    
-    //fiinal color
-    vec3 color = red_box + yellow_box + circle * red;
-   
+    float a = atan(pos.y,pos.x);
+    float f = cos(a*sin(u_time)*10 + u_time);
+    vec3 color = vec3(step(f, r));
     gl_FragColor = vec4(color, 1.0);  
 };

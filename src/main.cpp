@@ -79,13 +79,18 @@ int main(void)
     ReadShader("res/shaders/plane_vert.shader", square);
     std::string mandelbrot;
     ReadShader("res/shaders/mandelbrot_set_frag.shader", mandelbrot);
+    std::string julia;
+    ReadShader("res/shaders/julia_set_frag.shader", julia);
     std::string stolen;
     ReadShader("res/shaders/stolen.shader", stolen);
     std::string tbos;
     ReadShader("res/shaders/the_book_of_shaders_frag.shader", tbos);
+    std::string black_white_hole;
+    ReadShader("res/shaders/black_white_hole_frag.shader", black_white_hole);
+    std::string heart;
+    ReadShader("res/shaders/heart_beat_frag.shader", heart);
 
-    
-    run(window, square, tbos);
+    run(window, square, mandelbrot);
     
     
     glfwTerminate();
