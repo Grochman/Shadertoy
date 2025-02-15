@@ -144,6 +144,8 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\lib\fractal_coloring.shader" />
+    <None Include="res\lib\shapes.shader" />
     <None Include="res\shaders\black_white_hole_frag.shader" />
     <None Include="res\shaders\heart_beat_frag.shader" />
     <None Include="res\shaders\julia_set_frag.shader" />

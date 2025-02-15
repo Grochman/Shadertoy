@@ -1,20 +1,12 @@
 #version 330 core
 
 #define PI 3.14159265359
-         
+      
+#include "shapes.shader"
+
 uniform float u_time;
 uniform vec2 u_resolution;
 uniform vec2 u_mouse;
-
-float circle(in vec2 st, in vec2 center, in float r){
-    float dist = distance(st, center);    
-    return step(dist, r);
-}
-
-float circle(in vec2 st, in vec2 center, in float r, in float s){
-    float dist = distance(st, center);    
-    return smoothstep(dist,dist+s, r);
-}
 
 void main()
 {

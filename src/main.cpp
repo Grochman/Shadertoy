@@ -75,22 +75,15 @@ int main(void)
     glEnableVertexAttribArray(0); //idk
 
 
-    std::string square;
-    ReadShader("res/shaders/plane_vert.shader", square);
-    std::string mandelbrot;
-    ReadShader("res/shaders/mandelbrot_set_frag.shader", mandelbrot);
-    std::string julia;
-    ReadShader("res/shaders/julia_set_frag.shader", julia);
-    std::string stolen;
-    ReadShader("res/shaders/stolen.shader", stolen);
-    std::string tbos;
-    ReadShader("res/shaders/the_book_of_shaders_frag.shader", tbos);
-    std::string black_white_hole;
-    ReadShader("res/shaders/black_white_hole_frag.shader", black_white_hole);
-    std::string heart;
-    ReadShader("res/shaders/heart_beat_frag.shader", heart);
+    std::string square = ReadShader("res/shaders/plane_vert.shader");
+    std::string mandelbrot = ReadShader("res/shaders/mandelbrot_set_frag.shader");
+    std::string julia = ReadShader("res/shaders/julia_set_frag.shader");
+    std::string stolen = ReadShader("res/shaders/stolen.shader");
+    std::string tbos = ReadShader("res/shaders/the_book_of_shaders_frag.shader");
+    std::string black_white_hole = ReadShader("res/shaders/black_white_hole_frag.shader");
+    std::string heart = ReadShader("res/shaders/heart_beat_frag.shader");
 
-    run(window, square, mandelbrot);
+    run(window, square, julia);
     
     
     glfwTerminate();

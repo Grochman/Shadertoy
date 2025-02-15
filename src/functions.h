@@ -8,4 +8,4 @@
 
 unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
 
-unsigned int ReadShader(const char* path, std::string& shader);
+std::string ReadShader(const char* path);

@@ -30,6 +30,8 @@
     <None Include="res\shaders\black_white_hole_frag.shader" />
     <None Include="res\shaders\heart_beat_frag.shader" />
     <None Include="res\shaders\julia_set_frag.shader" />
+    <None Include="res\lib\fractal_coloring.shader" />
+    <None Include="res\lib\shapes.shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\functions.h">
