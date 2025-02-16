@@ -3,14 +3,19 @@ Minimalistic environment using OpenGL, GLEW, and GLFW for GLSL shader art develo
 
 ### Features
 - #include directive support for glsl files
+- micro-librarys for shapes and fractal coloring
 
 ### Original shaders
 - Mandelbrot set
-- Julia set
-- Heart beat
-- Black - white hole
+- Julia set 
 - sphere
 - loading screen
+
+
+![mandelbrot](https://github.com/user-attachments/assets/9f58bc47-538f-48c8-a990-7119ee25a30d)
+![julia](https://github.com/user-attachments/assets/e5fd438e-c57c-4e6b-b7c9-a354e8373af6)
+![sphere](https://github.com/user-attachments/assets/91d3806f-290a-4193-9f2e-9b59d3e0dc57)
+![loading](https://github.com/user-attachments/assets/0b413afd-b213-4e69-badd-ff6eb75ab772)
 
 ### Resources
 - Basic framework based on https://www.youtube.com/@TheCherno
