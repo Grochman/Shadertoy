@@ -2,7 +2,6 @@
 
 #define PI 3.14159265359
    
-#include "shapes.shader"
 #include "transform.shader"
 
 uniform float u_time;
@@ -26,8 +25,6 @@ float woblyring(vec2 st, vec2 center, float r, float depth, float t, int dir){
 void main()
 {
     vec2 st = gl_FragCoord.xy / u_resolution;
-    vec2 mp = u_mouse/u_resolution;
-    mp.y = 1-mp.y;
     
     vec3 color = vec3(0.);
 

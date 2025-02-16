@@ -76,15 +76,18 @@ int main(void)
 
 
     std::string square = ReadShader("res/shaders/vertex/simple.shader");
+    
     std::string mandelbrot = ReadShader("res/shaders/fragment/mandelbrot_set.shader");
     std::string julia = ReadShader("res/shaders/fragment/julia_set.shader");
     std::string playground = ReadShader("res/shaders/fragment/playground.shader");
-    std::string black_white_hole = ReadShader("res/shaders/fragment/black_white_hole.shader");
-    std::string heart = ReadShader("res/shaders/fragment/heart_beat.shader");
     std::string sphere = ReadShader("res/shaders/fragment/sphere.shader");
     std::string loading = ReadShader("res/shaders/fragment/loading.shader");
-
-    run(window, square, julia);
+    
+    std::string dots = ReadShader("res/shaders/fragment/dots.shader");
+    std::string cross = ReadShader("res/shaders/fragment/cross.shader");
+    std::string wobly = ReadShader("res/shaders/fragment/wobly_tiles.shader");
+    
+    run(window, square, wobly);
     
 
     glfwTerminate();

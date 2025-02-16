@@ -5,7 +5,7 @@ Minimalistic environment using OpenGL, GLEW, and GLFW for GLSL shader art develo
 - #include directive support for glsl files
 - micro-librarys for shapes and fractal coloring
 
-### Original shaders
+### Shaders
 - Mandelbrot set
 - Julia set 
 - sphere

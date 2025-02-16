@@ -33,6 +33,10 @@
     <None Include="res\lib\shapes.shader" />
     <None Include="res\shaders\fragment\sphere.shader" />
     <None Include="res\shaders\fragment\loading.shader" />
+    <None Include="res\lib\transform.shader" />
+    <None Include="res\shaders\fragment\dots.shader" />
+    <None Include="res\shaders\fragment\cross.shader" />
+    <None Include="res\shaders\fragment\wobly_tiles.shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\functions.h">
