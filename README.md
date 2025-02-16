@@ -10,6 +10,7 @@ Minimalistic environment using OpenGL, GLEW, and GLFW for GLSL shader art develo
 - Heart beat
 - Black - white hole
 - sphere
+- loading screen
 
 ### Resources
 - Basic framework based on https://www.youtube.com/@TheCherno

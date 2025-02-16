@@ -33,6 +33,7 @@
     <None Include="res\lib\fractal_coloring.shader" />
     <None Include="res\lib\shapes.shader" />
     <None Include="res\shaders\sphere_frag.shader" />
+    <None Include="res\shaders\loading_frag.shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\functions.h">
