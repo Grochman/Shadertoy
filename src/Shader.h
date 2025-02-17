@@ -22,6 +22,7 @@ public:
 	void Unbind();
 	void SetUniform2f(std::string name, float v0, float v1);
 	void SetUniform1f(std::string name, float v0);
+	void SetUniform1i(std::string name, int v0);
 	~Shader();
 };
 

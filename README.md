@@ -4,6 +4,7 @@ Minimalistic environment using OpenGL, GLEW, and GLFW for GLSL shader art develo
 ### Features
 - #include directive support for glsl files
 - micro-librarys for shapes and fractal coloring
+- texture support
 
 ### Shaders
 - Mandelbrot set

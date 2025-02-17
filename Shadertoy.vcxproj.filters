@@ -33,6 +33,12 @@
     <ClCompile Include="src\Shader.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
+    <ClCompile Include="src\vendor\stb_imgage\stb_image.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Texture.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\vertex\simple.shader" />
@@ -41,11 +47,11 @@
     <None Include="res\shaders\fragment\black_white_hole.shader" />
     <None Include="res\shaders\fragment\heart_beat.shader" />
     <None Include="res\shaders\fragment\julia_set.shader" />
-    <None Include="res\lib\fractal_coloring.shader" />
-    <None Include="res\lib\shapes.shader" />
+    <None Include="res\shaders\lib\fractal_coloring.shader" />
+    <None Include="res\shaders\lib\shapes.shader" />
     <None Include="res\shaders\fragment\sphere.shader" />
     <None Include="res\shaders\fragment\loading.shader" />
-    <None Include="res\lib\transform.shader" />
+    <None Include="res\shaders\lib\transform.shader" />
     <None Include="res\shaders\fragment\dots.shader" />
     <None Include="res\shaders\fragment\cross.shader" />
     <None Include="res\shaders\fragment\wobly_tiles.shader" />
@@ -64,6 +70,12 @@
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="src\Shader.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vendor\stb_imgage\stb_image.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Texture.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>
