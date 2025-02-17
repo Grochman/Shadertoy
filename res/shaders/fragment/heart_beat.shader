@@ -14,7 +14,6 @@ void main()
     vec2 mp = u_mouse/u_resolution;
     mp.y = 1-mp.y;
     
-    //heartbeat
     float time = fract(u_time);
     float t = step(time, 0.5)*(time*2.*PI);
 
@@ -22,7 +21,6 @@ void main()
     
     float circle = circle(st, mp, t1);
     
-    //fiinal color
     vec3 color = circle * vec3(1.,0.,0.);
    
     gl_FragColor = vec4(color, 1.0);  

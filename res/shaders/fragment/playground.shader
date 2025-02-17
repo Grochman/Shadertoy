@@ -2,17 +2,14 @@
 
 #define PI 3.14159265359
 
-in vec2 v_tex_cord;
+#include "utility.shader"
 
+in vec2 v_tex_cord;
 
 uniform float u_time;
 uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform sampler2D u_texture;
-
-float random(vec2 st){
-    return fract(sin( dot(st.xy, vec2(12.234234,24.2342) ) )* 100000);
-}
 
 void main()
 {

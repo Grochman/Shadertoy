@@ -3,6 +3,7 @@
 #define PI 3.14159265359
    
 #include "transform.shader"
+#include "utility.shader"
 
 uniform float u_time;
 uniform vec2 u_resolution;
@@ -19,10 +20,6 @@ float woblycircle(in vec2 st, in vec2 center, in float r, float t){
 
 float woblyring(vec2 st, vec2 center, float r, float depth, float t){
     return woblycircle(st,center, r, t) * (1-woblycircle(st, center, r-depth, t));
-}
-
-float random(vec2 st){
-    return fract(sin( dot(st.xy, vec2(12.234234,24.2342) ) )* 100000);
 }
 
 vec2 rotateTile(vec2 st, float index){

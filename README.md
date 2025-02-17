@@ -3,7 +3,7 @@ Minimalistic environment using OpenGL, GLEW, and GLFW for GLSL shader art develo
 
 ### Features
 - #include directive support for glsl files
-- micro-librarys for shapes and fractal coloring
+- micro-librarys for shapes, fractal coloring and random number generation
 - texture support
 
 ### Shaders

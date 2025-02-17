@@ -161,6 +161,7 @@
     <None Include="res\shaders\fragment\loading.shader" />
     <None Include="res\shaders\fragment\mandelbrot_set.shader" />
     <None Include="res\shaders\fragment\wobly_tiles.shader" />
+    <None Include="res\shaders\lib\utility.shader" />
     <None Include="res\shaders\vertex\simple.shader" />
     <None Include="res\shaders\fragment\sphere.shader" />
     <None Include="res\shaders\fragment\playground.shader" />
