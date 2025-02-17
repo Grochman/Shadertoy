@@ -46,13 +46,17 @@ int main(void)
         2, 3, 0
     };
    
-    VertexBuffer vb(possitions, sizeof(possitions));
+    unsigned int vao; //bind vertex buffer to layour
+    glGenVertexArrays(1, &vao);
+    glBindVertexArray(vao);
 
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
+    VertexBuffer vbo(possitions, sizeof(possitions));
 
-    IndexBuffer ib(indices, sizeof(indices) / sizeof(unsigned int));
-    
+    glEnableVertexAttribArray(0); // enable attribute 0 for processing
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0); //atribute data layout
+
+    IndexBuffer ibo(indices, sizeof(indices) / sizeof(unsigned int)); 
+
     //-----------------------------------------------------------------------
     std::string square = "res/shaders/vertex/simple.shader";
     
@@ -69,9 +73,26 @@ int main(void)
     //-----------------------------------------------------------------------
 
     Shader shader(square, julia);
+    shader.SetUniform2f("u_resolution", float(WINDOW_WIDTH), float(WINDOW_HEIGHT));
 
-    Renderer renderer(window, shader);
-    renderer.run();
+    Renderer renderer(shader, vao, ibo);
+
+    while (!glfwWindowShouldClose(window))
+    {
+        double mousexpos, mouseypos;
+        glfwGetCursorPos(window, &mousexpos, &mouseypos);
+        shader.SetUniform2f("u_mouse", mousexpos, mouseypos);
+        
+        float timeValue = glfwGetTime();
+        shader.SetUniform1f("u_time", timeValue);
+        
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        renderer.draw();
+
+        glfwSwapBuffers(window);
+        glfwPollEvents();
+    }
 
     glfwTerminate();
     return 0;

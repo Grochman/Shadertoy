@@ -3,41 +3,19 @@
 #include <fstream>
 #include <iostream>
 
-void Renderer::updateMousePos()
+
+Renderer::Renderer(Shader& shader, unsigned int vao, IndexBuffer& ibo)
+    : m_shader(shader), m_vao(vao), m_ibo(ibo)
 {
-    double mousexpos, mouseypos;
-    glfwGetCursorPos(m_window, &mousexpos, &mouseypos);
-    m_shader.SetUniform2f("u_mouse", mousexpos, mouseypos);
 }
 
-void Renderer::updateTime()
-{
-    float timeValue = glfwGetTime();
-    m_shader.SetUniform1f("u_time", timeValue);
-}
-
-
-Renderer::Renderer(GLFWwindow* window,Shader& shader): m_window(window), m_shader(shader)
-{
-    glfwGetWindowSize(m_window, &m_window_w, &m_window_h);
-}
-
-void Renderer::run() 
+void Renderer::draw() 
 {    
-    m_shader.Bound();
+    m_shader.Bind();
+    m_ibo.Bind();
+    glBindVertexArray(m_vao);
 
-    m_shader.SetUniform2f("u_resolution", float(m_window_w), float(m_window_h));
-    
-    while (!glfwWindowShouldClose(m_window))
-    {
-        updateTime();
-        updateMousePos();
-
-        glClear(GL_COLOR_BUFFER_BIT);
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
-        glfwSwapBuffers(m_window);
-        glfwPollEvents();
-    }
+    glDrawElements(GL_TRIANGLES, m_ibo.getCount(), GL_UNSIGNED_INT, nullptr);
 }
 
 Renderer::~Renderer()

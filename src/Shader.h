@@ -17,8 +17,8 @@ class Shader
 	unsigned int CompileShader(unsigned int type, const std::string& source);
 public:
 	Shader(std::string vertex_shader_path, std::string fragment_shader_path);
-	void Bound();
-	void Unbound();
+	void Bind();
+	void Unbind();
 	void SetUniform2f(std::string name, float v0, float v1);
 	void SetUniform1f(std::string name, float v0);
 	~Shader();

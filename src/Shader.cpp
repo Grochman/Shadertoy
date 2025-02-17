@@ -86,14 +86,15 @@ Shader::Shader(std::string vertex_shader_path, std::string fragment_shader_path)
     m_vertex_shader = ReadShader(m_vertex_shader_path);
     m_fragment_shader = ReadShader(m_fragment_shader_path);
     CreateShader();
+    Bind();
 }
 
-void Shader::Bound() 
+void Shader::Bind() 
 {
     glUseProgram(m_program);
 }
 
-void Shader::Unbound() 
+void Shader::Unbind() 
 {
     glUseProgram(0);
 }

@@ -1,21 +1,16 @@
 #pragma once
-#include <string>
-#include <GLFW/glfw3.h>
 #include "Shader.h"
+#include "IndexBuffer.h"
 
 class Renderer
 {
-	GLFWwindow* m_window;
-	int m_window_w;
-	int m_window_h;
-	
 	Shader& m_shader;
+	unsigned int m_vao;
+	IndexBuffer m_ibo;
 
-	void updateMousePos();
-	void updateTime();
 public:
-	Renderer(GLFWwindow* window,Shader& shader);
-	void run();
+	Renderer(Shader& shader, unsigned int vao, IndexBuffer& ibo);
+	void draw();
 	~Renderer();
 };
 
