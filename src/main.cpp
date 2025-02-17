@@ -9,24 +9,30 @@
 #define WINDOW_HEIGHT 600
 #define WINDOW_WIDTH 600
 
+static void updateMousePos(GLFWwindow* window, int mouseLocation) {
+    double mousexpos, mouseypos;
+    glfwGetCursorPos(window, &mousexpos, &mouseypos);
+    glUniform2f(mouseLocation, float(mousexpos), float(mouseypos));
+}
 
-void run(GLFWwindow* window, const std::string& vertexShader, const std::string& fragmentShader) {
+static void updateTime(int timeLocation) {
+    float timeValue = glfwGetTime();
+    glUniform1f(timeLocation, timeValue);
+}
+
+static void run(GLFWwindow* window, const std::string& vertexShader, const std::string& fragmentShader) {
     unsigned int shader = CreateShader(vertexShader, fragmentShader);
     glUseProgram(shader);    
     
     int timeLocation = glGetUniformLocation(shader, "u_time");
+    int mouseLocation = glGetUniformLocation(shader, "u_mouse");
     int resolutionLocation = glGetUniformLocation(shader, "u_resolution");
     glUniform2f(resolutionLocation, float(WINDOW_WIDTH), float(WINDOW_HEIGHT));
-    int mouseLocation = glGetUniformLocation(shader, "u_mouse");
-
-    double mousexpos, mouseypos;
     
     while (!glfwWindowShouldClose(window))
     {
-        float timeValue = glfwGetTime();
-        glUniform1f(timeLocation, timeValue);    
-        glfwGetCursorPos(window, &mousexpos, &mouseypos);
-        glUniform2f(mouseLocation, float(mousexpos), float(mouseypos));
+        updateTime(timeLocation);
+        updateMousePos(window, mouseLocation);
 
         glClear(GL_COLOR_BUFFER_BIT);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
@@ -96,7 +102,7 @@ int main(void)
     std::string playground = ReadShader("res/shaders/fragment/playground.shader");
 
 
-    run(window, square, mandelbrot);
+    run(window, square, dots);
     
 
     glfwTerminate();
