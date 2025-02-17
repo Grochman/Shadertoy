@@ -4,7 +4,7 @@
 #include <iostream>
 
 
-std::string Shader::ParseInclude(const std::string& directive)
+std::string Shader::ParseInclude(const std::string& directive) const
 {
     int f = 0;
     int l = 0;
@@ -18,13 +18,13 @@ std::string Shader::ParseInclude(const std::string& directive)
         }
     }
     std::string filename = directive.substr(f, l - f);
-    filename = "res/lib/" + filename;
+    filename = "res/shaders/lib/" + filename;
     std::string content = ReadShader(filename);
 
     return content;
 }
 
-std::string Shader::ReadShader(std::string& path)
+std::string Shader::ReadShader(std::string& path) const
 {
     std::ifstream file(path);
 
@@ -41,7 +41,7 @@ std::string Shader::ReadShader(std::string& path)
 }
 
 
-unsigned int Shader::CompileShader(unsigned int type, const std::string& source)
+unsigned int Shader::CompileShader(unsigned int type, const std::string& source) const
 {
     unsigned int id = glCreateShader(type);
     const char* src = source.c_str();

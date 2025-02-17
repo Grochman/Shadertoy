@@ -10,11 +10,12 @@ class Shader
 	
 	unsigned int m_program;
 
-	std::string ReadShader(std::string& path);
-	std::string ParseInclude(const std::string& directive);
-
+	std::string ReadShader(std::string& path) const;
+	std::string ParseInclude(const std::string& directive) const;
+	unsigned int CompileShader(unsigned int type, const std::string& source) const;
+	
 	void CreateShader();
-	unsigned int CompileShader(unsigned int type, const std::string& source);
+
 public:
 	Shader(std::string vertex_shader_path, std::string fragment_shader_path);
 	void Bind();
