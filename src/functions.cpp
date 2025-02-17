@@ -1,5 +1,16 @@
 #include "functions.h"
 
+void GLAPIENTRY messageCallback(GLenum source,
+    GLenum type,
+    GLuint id,
+    GLenum severity,
+    GLsizei length,
+    const GLchar* message,
+    const void* userParam) {
+    std::cout << message << std::endl;
+}
+
+
 static unsigned int CompileShader(unsigned int type, const std::string& source)
 {
     unsigned int id = glCreateShader(type);
@@ -24,7 +35,7 @@ static unsigned int CompileShader(unsigned int type, const std::string& source)
     return id;
 }
 
-unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader)
+static unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader)
 {
     unsigned int program = glCreateProgram();
     unsigned int vs = CompileShader(GL_VERTEX_SHADER, vertexShader);
@@ -41,7 +52,7 @@ unsigned int CreateShader(const std::string& vertexShader, const std::string& fr
     return program;
 }
 
-std::string ParseInclude(const std::string& directive) {
+static std::string ParseInclude(const std::string& directive) {
     int f = 0;
     int l = 0;
     for (int i = 7; i < directive.size(); i++) {
@@ -73,4 +84,42 @@ std::string ReadShader(const char* path) {
         else shader += line + '\n';
     }
     return shader;
+}
+
+
+static void updateMousePos(GLFWwindow* window, int mouseLocation) {
+    double mousexpos, mouseypos;
+    glfwGetCursorPos(window, &mousexpos, &mouseypos);
+    glUniform2f(mouseLocation, float(mousexpos), float(mouseypos));
+}
+
+static void updateTime(int timeLocation) {
+    float timeValue = glfwGetTime();
+    glUniform1f(timeLocation, timeValue);
+}
+
+void run(GLFWwindow* window, const std::string& vertexShader, const std::string& fragmentShader) {
+    int width, height;
+    glfwGetWindowSize(window, &width, &height);
+    
+    unsigned int shader = CreateShader(vertexShader, fragmentShader);
+    glUseProgram(shader);
+
+    int timeLocation = glGetUniformLocation(shader, "u_time");
+    int mouseLocation = glGetUniformLocation(shader, "u_mouse");
+    int resolutionLocation = glGetUniformLocation(shader, "u_resolution");
+    glUniform2f(resolutionLocation, float(width), float(height));
+
+    while (!glfwWindowShouldClose(window))
+    {
+        updateTime(timeLocation);
+        updateMousePos(window, mouseLocation);
+
+        glClear(GL_COLOR_BUFFER_BIT);
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
+        glfwSwapBuffers(window);
+        glfwPollEvents();
+    }
+
+    glDeleteProgram(shader);
 }

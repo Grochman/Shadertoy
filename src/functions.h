@@ -6,6 +6,14 @@
 #include <string>
 #include <sstream>
 
-unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
-
 std::string ReadShader(const char* path);
+
+void run(GLFWwindow* window, const std::string& vertexShader, const std::string& fragmentShader);
+
+void GLAPIENTRY messageCallback(GLenum source,
+    GLenum type,
+    GLuint id,
+    GLenum severity,
+    GLsizei length,
+    const GLchar* message,
+    const void* userParam);

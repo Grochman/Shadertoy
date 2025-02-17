@@ -4,44 +4,12 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+
 #include "functions.h"
 
 #define WINDOW_HEIGHT 600
 #define WINDOW_WIDTH 600
 
-static void updateMousePos(GLFWwindow* window, int mouseLocation) {
-    double mousexpos, mouseypos;
-    glfwGetCursorPos(window, &mousexpos, &mouseypos);
-    glUniform2f(mouseLocation, float(mousexpos), float(mouseypos));
-}
-
-static void updateTime(int timeLocation) {
-    float timeValue = glfwGetTime();
-    glUniform1f(timeLocation, timeValue);
-}
-
-static void run(GLFWwindow* window, const std::string& vertexShader, const std::string& fragmentShader) {
-    unsigned int shader = CreateShader(vertexShader, fragmentShader);
-    glUseProgram(shader);    
-    
-    int timeLocation = glGetUniformLocation(shader, "u_time");
-    int mouseLocation = glGetUniformLocation(shader, "u_mouse");
-    int resolutionLocation = glGetUniformLocation(shader, "u_resolution");
-    glUniform2f(resolutionLocation, float(WINDOW_WIDTH), float(WINDOW_HEIGHT));
-    
-    while (!glfwWindowShouldClose(window))
-    {
-        updateTime(timeLocation);
-        updateMousePos(window, mouseLocation);
-
-        glClear(GL_COLOR_BUFFER_BIT);
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
-        glfwSwapBuffers(window);
-        glfwPollEvents();
-    }
-
-    glDeleteProgram(shader);
-}
 
 int main(void)
 {
@@ -60,8 +28,10 @@ int main(void)
 
     if (glewInit()!=GLEW_OK)
         return -1;
-    std::cout << glGetString(GL_VERSION);
+    std::cout << glGetString(GL_VERSION) << std::endl;
     
+    glEnable(GL_DEBUG_OUTPUT);
+    glDebugMessageCallback(messageCallback, 0);
 
     float possitions[] = {
         -1.0f, -1.0f,
