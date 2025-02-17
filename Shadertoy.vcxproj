@@ -140,8 +140,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\functions.cpp" />
+    <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\Renderer.cpp" />
+    <ClCompile Include="src\IndexBuffer.cpp" />
+    <ClCompile Include="src\error_check.cpp" />
+    <ClCompile Include="src\run_program.cpp" />
+    <ClCompile Include="src\load_shaders.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\lib\fractal_coloring.shader" />
@@ -160,7 +166,13 @@
     <None Include="res\shaders\fragment\playground.shader" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\functions.h" />
+    <ClInclude Include="src\Shader.h" />
+    <ClInclude Include="src\Renderer.h" />
+    <ClInclude Include="src\IndexBuffer.h" />
+    <ClInclude Include="src\error_check.h" />
+    <ClInclude Include="src\run_program.h" />
+    <ClInclude Include="src\load_shaders.h" />
+    <ClInclude Include="src\VertexBuffer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
