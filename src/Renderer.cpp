@@ -9,6 +9,10 @@ Renderer::Renderer(Shader& shader, unsigned int vao, IndexBuffer& ibo)
 {
 }
 
+Renderer::~Renderer()
+{
+}
+
 void Renderer::draw() 
 {    
     m_shader.Bind();
@@ -16,8 +20,4 @@ void Renderer::draw()
     glBindVertexArray(m_vao);
 
     glDrawElements(GL_TRIANGLES, m_ibo.getCount(), GL_UNSIGNED_INT, nullptr);
-}
-
-Renderer::~Renderer()
-{
 }

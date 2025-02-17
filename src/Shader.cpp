@@ -4,6 +4,49 @@
 #include <iostream>
 
 
+Shader::Shader(std::string vertex_shader_path, std::string fragment_shader_path)
+    :m_vertex_shader_path(vertex_shader_path), m_fragment_shader_path(fragment_shader_path)
+{
+    m_vertex_shader = ReadShader(m_vertex_shader_path);
+    m_fragment_shader = ReadShader(m_fragment_shader_path);
+    CreateShader();
+    Bind();
+}
+
+void Shader::Bind()
+{
+    glUseProgram(m_program);
+}
+
+void Shader::Unbind()
+{
+    glUseProgram(0);
+}
+
+Shader::~Shader()
+{
+    glDeleteProgram(m_program);
+}
+
+void Shader::SetUniform2f(std::string name, float v0, float v1)
+{
+    int loc = glGetUniformLocation(m_program, name.c_str());
+    glUniform2f(loc, v0, v1);
+}
+
+void Shader::SetUniform1f(std::string name, float v0)
+{
+    int loc = glGetUniformLocation(m_program, name.c_str());
+    glUniform1f(loc, v0);
+}
+
+void Shader::SetUniform1i(std::string name, int v0)
+{
+    int loc = glGetUniformLocation(m_program, name.c_str());
+    glUniform1i(loc, v0);
+}
+
+
 std::string Shader::ParseInclude(const std::string& directive) const
 {
     int f = 0;
@@ -39,7 +82,6 @@ std::string Shader::ReadShader(std::string& path) const
     }
     return shader;
 }
-
 
 unsigned int Shader::CompileShader(unsigned int type, const std::string& source) const
 {
@@ -78,45 +120,4 @@ void Shader::CreateShader()
 
     glDeleteShader(vs);
     glDeleteShader(fs);
-}
-
-Shader::Shader(std::string vertex_shader_path, std::string fragment_shader_path)
-    :m_vertex_shader_path(vertex_shader_path), m_fragment_shader_path(fragment_shader_path)
-{
-    m_vertex_shader = ReadShader(m_vertex_shader_path);
-    m_fragment_shader = ReadShader(m_fragment_shader_path);
-    CreateShader();
-    Bind();
-}
-
-void Shader::Bind() 
-{
-    glUseProgram(m_program);
-}
-
-void Shader::Unbind() 
-{
-    glUseProgram(0);
-}
-
-Shader::~Shader() 
-{
-    glDeleteProgram(m_program);
-}
-
-
-void Shader::SetUniform2f(std::string name, float v0, float v1)
-{
-    int loc = glGetUniformLocation(m_program, name.c_str());
-    glUniform2f(loc, v0, v1);
-}
-void Shader::SetUniform1f(std::string name, float v0)
-{
-    int loc = glGetUniformLocation(m_program, name.c_str());
-    glUniform1f(loc, v0);
-}
-void Shader::SetUniform1i(std::string name, int v0)
-{
-    int loc = glGetUniformLocation(m_program, name.c_str());
-    glUniform1i(loc, v0);
 }

@@ -6,9 +6,9 @@ class IndexBuffer
 
 public:
     IndexBuffer(const void* data, unsigned int size);
+    ~IndexBuffer();
     void Bind();
     void Unbind();
     unsigned int getCount();
-    ~IndexBuffer();
 };
 

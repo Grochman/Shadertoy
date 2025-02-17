@@ -9,7 +9,8 @@ uniform float u_time;
 uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 
-float woblycircle(in vec2 st, in vec2 center, in float r, float t){
+float woblycircle(in vec2 st, in vec2 center, in float r, float t)
+{
     vec2 d = st - center;
     float theta = atan(d.y,d.x);
     theta = (theta)*30+PI/10+t; 
@@ -18,11 +19,13 @@ float woblycircle(in vec2 st, in vec2 center, in float r, float t){
     return step(dist, r);
 }
 
-float woblyring(vec2 st, vec2 center, float r, float depth, float t){
+float woblyring(vec2 st, vec2 center, float r, float depth, float t)
+{
     return woblycircle(st,center, r, t) * (1-woblycircle(st, center, r-depth, t));
 }
 
-vec2 rotateTile(vec2 st, float index){
+vec2 rotateTile(vec2 st, float index)
+{
     if (index > 0.75) {
         st = vec2(1.0) - st;
     } else if (index > 0.5) {
