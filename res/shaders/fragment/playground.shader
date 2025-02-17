@@ -26,6 +26,6 @@ void main()
     vec2 fpos = fract(st);
 
     color += vec3(random(ipos));
-    
+   
     gl_FragColor = vec4(color, 1.0);  
 };
