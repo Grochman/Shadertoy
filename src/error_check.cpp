@@ -7,6 +7,7 @@ void GLAPIENTRY messageCallback(GLenum source,
     GLenum severity,
     GLsizei length,
     const GLchar* message,
-    const void* userParam) {
+    const void* userParam) 
+{
     std::cout << message << std::endl;
 }

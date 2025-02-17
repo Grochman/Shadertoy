@@ -46,7 +46,7 @@ int main(void)
         2, 3, 0
     };
    
-    unsigned int vao; //bind vertex buffer to layour
+    unsigned int vao; //bind vertex buffer to layout
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
 

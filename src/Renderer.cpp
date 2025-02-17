@@ -20,5 +20,4 @@ void Renderer::draw()
 
 Renderer::~Renderer()
 {
-
 }
