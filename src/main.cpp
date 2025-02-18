@@ -69,14 +69,14 @@ int main(void)
     std::string cross = "res/shaders/fragment/cross.shader";
     std::string wobly = "res/shaders/fragment/wobly_tiles.shader";
     
-    std::string playground = "res/shaders/fragment/playground.shader";
     std::string halftone = "res/shaders/fragment/halftone.shader";
     std::string halftone_color = "res/shaders/fragment/halftone_color.shader";
-
+    
+    std::string playground = "res/shaders/fragment/playground.shader";
     //-----------------------------------------------------------------------
 
-    Shader shader(square, halftone);
-    Texture texture("res/textures/panda.png");
+    Shader shader(square, halftone_color);
+    Texture texture("res/textures/test.png");
     
     shader.SetUniform1i("u_texture", 0);
     shader.SetUniform2f("u_resolution", float(WINDOW_WIDTH), float(WINDOW_HEIGHT));
