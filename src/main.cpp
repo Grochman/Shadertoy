@@ -71,6 +71,8 @@ int main(void)
     
     std::string playground = "res/shaders/fragment/playground.shader";
     std::string halftone = "res/shaders/fragment/halftone.shader";
+    std::string halftone_color = "res/shaders/fragment/halftone_color.shader";
+
     //-----------------------------------------------------------------------
 
     Shader shader(square, halftone);

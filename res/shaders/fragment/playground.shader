@@ -13,7 +13,6 @@ uniform sampler2D u_texture;
 
 void main()
 {
-    
     vec4 tex_color = texture(u_texture, v_tex_coord);
     vec2 st = gl_FragCoord.xy / u_resolution;
     vec2 mp = u_mouse/u_resolution;

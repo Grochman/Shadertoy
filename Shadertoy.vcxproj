@@ -152,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\fragment\halftone.shader" />
+    <None Include="res\shaders\fragment\halftone_color.shader" />
     <None Include="res\shaders\lib\fractal_coloring.shader" />
     <None Include="res\shaders\lib\shapes.shader" />
     <None Include="res\shaders\lib\transform.shader" />

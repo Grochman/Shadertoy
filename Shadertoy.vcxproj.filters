@@ -60,6 +60,7 @@
     <None Include="res\shaders\fragment\wobly_tiles.shader" />
     <None Include="res\shaders\lib\utility.shader" />
     <None Include="res\shaders\fragment\halftone.shader" />
+    <None Include="res\shaders\fragment\halftone_color.shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\error_check.h">
