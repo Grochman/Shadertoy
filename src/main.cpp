@@ -1,7 +1,9 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+
 #include <iostream>
 #include <string>
+#include <vector>
 
 #include "error_check.h"
 #include "VertexBuffer.h"
@@ -9,6 +11,8 @@
 #include "Renderer.h"
 #include "Shader.h"
 #include "Texture.h"
+#include "VertexArray.h"
+
 
 #define WINDOW_HEIGHT 600
 #define WINDOW_WIDTH 600
@@ -17,6 +21,7 @@
 int main(void)
 {
     GLFWwindow* window;
+    double mousexpos, mouseypos;
 
     if (!glfwInit())
         return -1;
@@ -36,31 +41,21 @@ int main(void)
     glEnable(GL_DEBUG_OUTPUT);
     glDebugMessageCallback(messageCallback, 0);
 
+
     float possitions[] = { // (pos.xy, text.xy)
-        -0.5f, -0.5f, 0.f, 0.0f,
-         0.5f, -0.5f, 1.f, 0.0f,
-         0.5f,  0.5f, 1.f, 1.0f,
-        -0.5f,  0.5f, 0.f, 1.0f
+        -1.0f, -1.0f, 0.f, 0.0f,
+         1.0f, -1.0f, 1.f, 0.0f,
+         1.0f,  1.0f, 1.f, 1.0f,
+        -1.0f,  1.0f, 0.f, 1.0f,
     };
     unsigned int indices[] = {
         0, 1, 2,
         2, 3, 0
     };
    
-    unsigned int vao; //bind vertex buffer to layout
-    glGenVertexArrays(1, &vao);
-    glBindVertexArray(vao);
-
     VertexBuffer vbo(possitions, sizeof(possitions));
-
-    glEnableVertexAttribArray(0); // enable attribute 0 for processing
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 4, 0); //atribute data layout
-
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 4, (GLvoid*)(sizeof(float)*2));
-
+    VertexArray vao(vbo, { {2,sizeof(float)*2, GL_FLOAT},{2, sizeof(float)*2,GL_FLOAT} });
     IndexBuffer ibo(indices, sizeof(indices) / sizeof(unsigned int)); 
-
     
     //-----------------------------------------------------------------------
     std::string square = "res/shaders/vertex/simple.shader";
@@ -75,9 +70,10 @@ int main(void)
     std::string wobly = "res/shaders/fragment/wobly_tiles.shader";
     
     std::string playground = "res/shaders/fragment/playground.shader";
+    std::string ts = "res/shaders/fragment/texturetests.shader";
     //-----------------------------------------------------------------------
 
-    Shader shader(square, playground);
+    Shader shader(square, ts);
     Texture texture("res/textures/tuman.png");
     
     shader.SetUniform1i("u_texture", 0);
@@ -87,12 +83,11 @@ int main(void)
 
     while (!glfwWindowShouldClose(window))
     {
-        double mousexpos, mouseypos;
         glfwGetCursorPos(window, &mousexpos, &mouseypos);
         shader.SetUniform2f("u_mouse", mousexpos, mouseypos);
         
-        float timeValue = glfwGetTime();
-        shader.SetUniform1f("u_time", timeValue);
+        float time = glfwGetTime();
+        shader.SetUniform1f("u_time", time);
         
         glClear(GL_COLOR_BUFFER_BIT);
 

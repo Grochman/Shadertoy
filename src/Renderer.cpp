@@ -4,7 +4,7 @@
 #include <iostream>
 
 
-Renderer::Renderer(Shader& shader, unsigned int vao, IndexBuffer& ibo)
+Renderer::Renderer(Shader& shader, VertexArray& vao, IndexBuffer& ibo)
     : m_shader(shader), m_vao(vao), m_ibo(ibo)
 {
 }
@@ -17,7 +17,6 @@ void Renderer::draw()
 {    
     m_shader.Bind();
     m_ibo.Bind();
-    glBindVertexArray(m_vao);
-
+    m_vao.Bind();
     glDrawElements(GL_TRIANGLES, m_ibo.getCount(), GL_UNSIGNED_INT, nullptr);
 }

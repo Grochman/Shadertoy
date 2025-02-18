@@ -1,16 +1,17 @@
 #pragma once
 #include "Shader.h"
 #include "IndexBuffer.h"
+#include "VertexArray.h"
 
 class Renderer
 {
 	Shader& m_shader;
-	unsigned int m_vao;
-	IndexBuffer m_ibo;
+	VertexArray& m_vao;
+	IndexBuffer& m_ibo;
 
 public:
-	Renderer(Shader& shader, unsigned int vao, IndexBuffer& ibo);
-	void draw();
+	Renderer(Shader& shader, VertexArray& vao, IndexBuffer& ibo);
 	~Renderer();
+	void draw();
 };
 
