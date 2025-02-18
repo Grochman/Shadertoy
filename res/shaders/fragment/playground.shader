@@ -4,7 +4,7 @@
 
 #include "utility.shader"
 
-in vec2 v_tex_cord;
+in vec2 v_tex_coord;
 
 uniform float u_time;
 uniform vec2 u_resolution;
@@ -14,7 +14,7 @@ uniform sampler2D u_texture;
 void main()
 {
     
-    vec4 tex_color = texture(u_texture, v_tex_cord);
+    vec4 tex_color = texture(u_texture, v_tex_coord);
     vec2 st = gl_FragCoord.xy / u_resolution;
     vec2 mp = u_mouse/u_resolution;
     mp.y = 1-mp.y;
