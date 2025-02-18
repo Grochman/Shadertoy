@@ -11,7 +11,7 @@ Minimalistic environment using OpenGL, GLEW, and GLFW for GLSL shader art develo
 - Julia set 
 - sphere
 - loading screen
-
+- halftone grayscale
 
 ![mandelbrot](https://github.com/user-attachments/assets/9f58bc47-538f-48c8-a990-7119ee25a30d)
 ![julia](https://github.com/user-attachments/assets/e5fd438e-c57c-4e6b-b7c9-a354e8373af6)

@@ -70,11 +70,11 @@ int main(void)
     std::string wobly = "res/shaders/fragment/wobly_tiles.shader";
     
     std::string playground = "res/shaders/fragment/playground.shader";
-    std::string ts = "res/shaders/fragment/texturetests.shader";
+    std::string halftone = "res/shaders/fragment/halftone.shader";
     //-----------------------------------------------------------------------
 
-    Shader shader(square, ts);
-    Texture texture("res/textures/tuman.png");
+    Shader shader(square, halftone);
+    Texture texture("res/textures/panda.png");
     
     shader.SetUniform1i("u_texture", 0);
     shader.SetUniform2f("u_resolution", float(WINDOW_WIDTH), float(WINDOW_HEIGHT));
