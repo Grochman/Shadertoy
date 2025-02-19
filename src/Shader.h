@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <unordered_map>
 
 class Shader
 {
@@ -9,6 +10,8 @@ class Shader
 	std::string m_fragment_shader;
 	
 	unsigned int m_program;
+
+	std::unordered_map<std::string, int> uniforms;
 
 public:
 	Shader(std::string vertex_shader_path, std::string fragment_shader_path);

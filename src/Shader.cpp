@@ -30,7 +30,9 @@ Shader::~Shader()
 
 void Shader::SetUniform2f(std::string name, float v0, float v1)
 {
-    int loc = glGetUniformLocation(m_program, name.c_str());
+    if(uniforms.find(name) == uniforms.end())
+        uniforms[name] = glGetUniformLocation(m_program, name.c_str());
+    int loc = uniforms[name];
     glUniform2f(loc, v0, v1);
 }
 
