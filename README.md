@@ -31,3 +31,4 @@ Minimalistic environment using OpenGL, GLEW, and GLFW for GLSL shader art develo
 - Basic framework based on https://www.youtube.com/@TheCherno
 - GLSL The Book of Shaders https://thebookofshaders.com/
 - Shaping functions visualization https://graphtoy.com/
+- Color palette generator https://coolors.co/
