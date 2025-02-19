@@ -71,11 +71,12 @@ int main(void)
     
     std::string halftone = "res/shaders/fragment/halftone.shader";
     std::string halftone_color = "res/shaders/fragment/halftone_color.shader";
-    
+    std::string halftone_color2 = "res/shaders/fragment/kuwahara_filter.shader";
+
     std::string playground = "res/shaders/fragment/playground.shader";
     //-----------------------------------------------------------------------
 
-    Shader shader(square, halftone_color);
+    Shader shader(square, halftone_color2);
     Texture texture("res/textures/test.png");
     
     shader.SetUniform1i("u_texture", 0);
