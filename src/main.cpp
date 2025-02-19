@@ -69,21 +69,17 @@ int main(void)
     std::string julia = "res/shaders/fragment/julia_set.shader";
     std::string sphere = "res/shaders/fragment/sphere.shader";
     std::string loading = "res/shaders/fragment/loading.shader";
-    std::string dots =  "res/shaders/fragment/dots.shader";
-
-    std::string cross = "res/shaders/fragment/cross.shader";
-    std::string wobly = "res/shaders/fragment/wobly_tiles.shader";
     
     std::string halftone = "res/shaders/fragment/halftone.shader";
     std::string halftone_color = "res/shaders/fragment/halftone_color.shader";
     std::string kuwahara = "res/shaders/fragment/kuwahara_filter.shader";
     std::string palette = "res/shaders/fragment/palette_quantization.shader";
-    std::string lum = "res/shaders/fragment/luminacence_quantization.shader";
+    std::string luminacence = "res/shaders/fragment/luminacence_quantization.shader";
 
-    std::string playground = "res/shaders/fragment/playground.shader";
+    std::string playground = "res/shaders/scraps/playground.shader";
     //-----------------------------------------------------------------------
 
-    Shader shader(square, lum);
+    Shader shader(square, luminacence);
     Texture texture("res/textures/test.png");
     
     shader.SetUniform1i("u_texture", 0);

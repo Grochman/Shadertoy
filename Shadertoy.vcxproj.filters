@@ -46,18 +46,18 @@
   <ItemGroup>
     <None Include="res\shaders\vertex\simple.shader" />
     <None Include="res\shaders\fragment\mandelbrot_set.shader" />
-    <None Include="res\shaders\fragment\playground.shader" />
-    <None Include="res\shaders\fragment\black_white_hole.shader" />
-    <None Include="res\shaders\fragment\heart_beat.shader" />
+    <None Include="res\shaders\scraps\playground.shader" />
+    <None Include="res\shaders\scraps\black_white_hole.shader" />
+    <None Include="res\shaders\scraps\heart_beat.shader" />
     <None Include="res\shaders\fragment\julia_set.shader" />
     <None Include="res\shaders\lib\fractal_coloring.shader" />
     <None Include="res\shaders\lib\shapes.shader" />
     <None Include="res\shaders\fragment\sphere.shader" />
     <None Include="res\shaders\fragment\loading.shader" />
     <None Include="res\shaders\lib\transform.shader" />
-    <None Include="res\shaders\fragment\dots.shader" />
-    <None Include="res\shaders\fragment\cross.shader" />
-    <None Include="res\shaders\fragment\wobly_tiles.shader" />
+    <None Include="res\shaders\scraps\dots.shader" />
+    <None Include="res\shaders\scraps\cross.shader" />
+    <None Include="res\shaders\scraps\wobly_tiles.shader" />
     <None Include="res\shaders\lib\utility.shader" />
     <None Include="res\shaders\fragment\halftone.shader" />
     <None Include="res\shaders\fragment\halftone_color.shader" />
