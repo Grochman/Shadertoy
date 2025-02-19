@@ -74,7 +74,7 @@ void main()
 
 	float pixel = 1./u_resolution.x;
 	
-	int kernel_size = 23; //should be odd int;
+	int kernel_size = 25; //should be odd int;
 	
 	int square_size = int(ceil(float(kernel_size)/2.));
 

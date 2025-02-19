@@ -77,6 +77,7 @@ int main(void)
     std::string halftone = "res/shaders/fragment/halftone.shader";
     std::string halftone_color = "res/shaders/fragment/halftone_color.shader";
     std::string kuwahara = "res/shaders/fragment/kuwahara_filter.shader";
+    std::string palette = "res/shaders/fragment/palette_quantization.shader";
 
     std::string playground = "res/shaders/fragment/playground.shader";
     //-----------------------------------------------------------------------
