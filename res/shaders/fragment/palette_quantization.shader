@@ -14,7 +14,7 @@ void main()
 {
     vec3 tex_color = texture(u_texture, v_tex_coord).rgb;
     
-    vec3 palette[COLOR_COUNT] = palette1;
+    vec3 palette[COLOR_COUNT] = palette2;
     
     int min_idx = 0;
     float min_val = 100;
