@@ -17,6 +17,11 @@
 #define WINDOW_HEIGHT 600
 #define WINDOW_WIDTH 600
 
+void fps(double t1, double t2) {
+    double delta = abs(t2 - t1);
+    double fps = 1 / delta;
+    std::cout << fps << std::endl;
+}
 
 int main(void)
 {
@@ -71,27 +76,32 @@ int main(void)
     
     std::string halftone = "res/shaders/fragment/halftone.shader";
     std::string halftone_color = "res/shaders/fragment/halftone_color.shader";
-    std::string halftone_color2 = "res/shaders/fragment/kuwahara_filter.shader";
+    std::string kuwahara = "res/shaders/fragment/kuwahara_filter.shader";
 
     std::string playground = "res/shaders/fragment/playground.shader";
     //-----------------------------------------------------------------------
 
-    Shader shader(square, halftone_color2);
+    Shader shader(square, kuwahara);
     Texture texture("res/textures/test.png");
     
     shader.SetUniform1i("u_texture", 0);
     shader.SetUniform2f("u_resolution", float(WINDOW_WIDTH), float(WINDOW_HEIGHT));
 
     Renderer renderer(shader, vao, ibo);
-
+    float t1 = 0;
+    float t2 = 0;
     while (!glfwWindowShouldClose(window))
     {
         glfwGetCursorPos(window, &mousexpos, &mouseypos);
         shader.SetUniform2f("u_mouse", mousexpos, mouseypos);
         
-        float time = glfwGetTime();
-        shader.SetUniform1f("u_time", time);
+        t2 = t1;
+        t1 = glfwGetTime();
+        shader.SetUniform1f("u_time", t1);
         
+//        fps(t1, t2);
+
+
         glClear(GL_COLOR_BUFFER_BIT);
 
         renderer.draw();
