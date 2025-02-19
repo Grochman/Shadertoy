@@ -1,12 +1,8 @@
 #version 330 core
 
-#define PI 3.14159265359
-
 in vec2 v_tex_coord;
 
-uniform float u_time;
 uniform vec2 u_resolution;
-uniform vec2 u_mouse;
 uniform sampler2D u_texture;
 
 const int COLOR_COUNT = 5;
@@ -21,17 +17,15 @@ void main()
     vec3 palette[COLOR_COUNT] = palette1;
     
     int min_idx = 0;
-    float min_val = 10;
+    float min_val = 100;
     
     for(int i = 0; i < COLOR_COUNT; i++)
     {
         palette[i] /= 255;    
         float dist = distance(tex_color, palette[i]);
-        if (min_val > dist)
-        {
-            min_val = dist;
-            min_idx = i;
-        }
+        
+        min_idx = int(mix(min_idx, i, 1.0 - step(min_val, dist)));
+        min_val = min(min_val, dist);
     }
     tex_color = palette[min_idx];
 

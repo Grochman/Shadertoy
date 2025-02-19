@@ -29,40 +29,6 @@ void std_avg(int square_size, vec2 start, float pixel,out vec3 avg_color, out fl
 	std = sqrt(sum_of_squares/count - avg * avg);
 }
 
-float avg(int square_size, vec2 start, float pixel)
-{
-	vec2 tex_coord = start;
-	float avg = 0;
-	for(int i = 0; i < square_size; i++)
-	{
-		for(int j = 0; j < square_size; j++)
-		{
-			tex_coord = start + vec2(float(j), float(i))*pixel;
-			vec3 c = texture(u_texture, tex_coord).rgb;
-			avg += (c.r+c.g+c.b)*0.33;
-		}
-	}
-	return avg / float(square_size*square_size);
-}
-
-float std(int square_size, vec2 start, float pixel, float avg)
-{
-	vec2 tex_coord = start;
-	float std = 0;
-	for(int i = 0; i < square_size; i++)
-	{
-		for(int j = 0; j < square_size; j++)
-		{
-			tex_coord = start + vec2(float(j), float(i))*pixel;
-			vec3 c = texture(u_texture, tex_coord).rgb;
-			std += pow((c.r+c.g+c.b)*0.33-avg, 2);
-		}
-	}
-	std /= square_size*square_size;
-	std = sqrt(std);
-	return std;
-}
-
 void main()
 {	
 	vec3 avg_col_1 = vec3(0);
@@ -97,12 +63,18 @@ void main()
 	min_std = min(min_std, std.w);
 
 	vec3 color = avg_col_1;
+	
 	if(std.y == min_std)
 		color = avg_col_2;
 	else if(std.z == min_std)
 		color = avg_col_3;
 	else if(std.w == min_std)
 		color = avg_col_4;
-		
+	
+	//color = mix(color, avg_col_1, 1-step(min_std, std.x));
+	//color = mix(color, avg_col_2, 1-step(min_std, std.y));
+	//color = mix(color, avg_col_3, 1-step(min_std, std.z));
+	//color = mix(color, avg_col_4, 1-step(min_std, std.w));
+
 	gl_FragColor = vec4(vec3(color), 1.0);
 }
