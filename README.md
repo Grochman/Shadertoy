@@ -15,7 +15,7 @@ Minimalistic environment using OpenGL, GLEW, and GLFW for GLSL shader art develo
 - halftone in color (rgb) with dot travel and angle offset
 - kuwahara filter with color
 - palette quantization to specified color palette
-- luminance quantization
+- luminance quantization with color preservation using value from hsv mapped colors 
 
 ![mandelbrot](https://github.com/user-attachments/assets/9f58bc47-538f-48c8-a990-7119ee25a30d)
 ![julia](https://github.com/user-attachments/assets/e5fd438e-c57c-4e6b-b7c9-a354e8373af6)
