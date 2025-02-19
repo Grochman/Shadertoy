@@ -151,6 +151,7 @@
     <ClCompile Include="src\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\shaders\fragment\dithering.shader" />
     <None Include="res\shaders\fragment\halftone.shader" />
     <None Include="res\shaders\fragment\halftone_color.shader" />
     <None Include="res\shaders\fragment\kuwahara_filter.shader" />

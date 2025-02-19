@@ -65,6 +65,7 @@
     <None Include="res\shaders\fragment\palette_quantization.shader" />
     <None Include="res\shaders\fragment\luminacence_quantization.shader" />
     <None Include="res\shaders\lib\color_formats.shader" />
+    <None Include="res\shaders\fragment\dithering.shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\error_check.h">

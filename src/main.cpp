@@ -75,11 +75,12 @@ int main(void)
     std::string kuwahara = "res/shaders/fragment/kuwahara_filter.shader";
     std::string palette = "res/shaders/fragment/palette_quantization.shader";
     std::string luminacence = "res/shaders/fragment/luminacence_quantization.shader";
+    std::string dithering= "res/shaders/fragment/dithering.shader";
 
     std::string playground = "res/shaders/scraps/playground.shader";
     //-----------------------------------------------------------------------
 
-    Shader shader(square, luminacence);
+    Shader shader(square, dithering);
     Texture texture("res/textures/test.png");
     
     shader.SetUniform1i("u_texture", 0);
