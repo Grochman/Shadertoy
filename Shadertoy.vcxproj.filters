@@ -59,13 +59,14 @@
     <None Include="res\shaders\scraps\cross.shader" />
     <None Include="res\shaders\scraps\wobly_tiles.shader" />
     <None Include="res\shaders\lib\utility.shader" />
-    <None Include="res\shaders\fragment\halftone.shader" />
-    <None Include="res\shaders\fragment\halftone_color.shader" />
-    <None Include="res\shaders\fragment\kuwahara_filter.shader" />
-    <None Include="res\shaders\fragment\palette_quantization.shader" />
-    <None Include="res\shaders\fragment\luminacence_quantization.shader" />
+    <None Include="res\shaders\fragment\filters\halftone.shader" />
+    <None Include="res\shaders\fragment\filters\halftone_color.shader" />
+    <None Include="res\shaders\fragment\filters\kuwahara_filter.shader" />
+    <None Include="res\shaders\fragment\filters\palette_quantization.shader" />
+    <None Include="res\shaders\fragment\filters\luminacence_quantization.shader" />
     <None Include="res\shaders\lib\color_formats.shader" />
-    <None Include="res\shaders\fragment\dithering.shader" />
+    <None Include="res\shaders\fragment\filters\dithering.shader" />
+    <None Include="res\shaders\fragment\filters\gaussian_blur.shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\error_check.h">

@@ -41,9 +41,9 @@ void main()
 	float pixel = 1./u_resolution.x;
 	
 	int kernel_size = 12;
-	kernel_size = kernel_size * 2 + 1;
+	int square_size = kernel_size + 1;
 
-	int square_size = int(ceil(float(kernel_size)/2.));
+	kernel_size = kernel_size * 2 + 1;
 
 	//calculate avg and std for each square
 	vec2 start = v_tex_coord;

@@ -70,17 +70,17 @@ int main(void)
     std::string sphere = "res/shaders/fragment/sphere.shader";
     std::string loading = "res/shaders/fragment/loading.shader";
     
-    std::string halftone = "res/shaders/fragment/halftone.shader";
-    std::string halftone_color = "res/shaders/fragment/halftone_color.shader";
-    std::string kuwahara = "res/shaders/fragment/kuwahara_filter.shader";
-    std::string palette = "res/shaders/fragment/palette_quantization.shader";
-    std::string luminacence = "res/shaders/fragment/luminacence_quantization.shader";
-    std::string dithering= "res/shaders/fragment/dithering.shader";
+    std::string halftone = "res/shaders/fragment/filters/halftone.shader";
+    std::string halftone_color = "res/shaders/fragment/filters/halftone_color.shader";
+    std::string kuwahara = "res/shaders/fragment/filters/kuwahara_filter.shader";
+    std::string palette = "res/shaders/fragment/filters/palette_quantization.shader";
+    std::string luminacence = "res/shaders/fragment/filters/luminacence_quantization.shader";
+    std::string dithering= "res/shaders/fragment/filters/dithering.shader";
 
     std::string playground = "res/shaders/scraps/playground.shader";
     //-----------------------------------------------------------------------
 
-    Shader shader(square, dithering);
+    Shader shader(square, kuwahara);
     Texture texture("res/textures/test.png");
     
     shader.SetUniform1i("u_texture", 0);
