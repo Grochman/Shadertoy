@@ -151,6 +151,7 @@
     <ClCompile Include="src\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\shaders\fragment\default.shader" />
     <None Include="res\shaders\fragment\filters\dithering.shader" />
     <None Include="res\shaders\fragment\filters\gaussian_blur.shader" />
     <None Include="res\shaders\fragment\filters\halftone.shader" />
@@ -171,7 +172,7 @@
     <None Include="res\shaders\fragment\mandelbrot_set.shader" />
     <None Include="res\shaders\scraps\wobly_tiles.shader" />
     <None Include="res\shaders\lib\utility.shader" />
-    <None Include="res\shaders\vertex\simple.shader" />
+    <None Include="res\shaders\vertex\default.shader" />
     <None Include="res\shaders\fragment\sphere.shader" />
     <None Include="res\shaders\scraps\playground.shader" />
   </ItemGroup>
