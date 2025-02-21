@@ -40,8 +40,9 @@ void main()
 
 	float pixel = 1./u_resolution.x;
 	
-	int kernel_size = 25; //should be odd int;
-	
+	int kernel_size = 12;
+	kernel_size = kernel_size * 2 + 1;
+
 	int square_size = int(ceil(float(kernel_size)/2.));
 
 	//calculate avg and std for each square
