@@ -4,7 +4,11 @@ Minimalistic environment using OpenGL, GLEW, and GLFW for GLSL shader art and im
 ### Features
 - #include directive support for glsl files
 - texture support
-- micro-librarys for: shapes, fractal coloring, random number generation, color conversion (quite inefficient)
+- micro-librarys for:
+    - basic shapes
+    - fractal coloring
+    - random number generation
+    - color conversion (quite inefficient)
 
 ### Shaders
 - mandelbrot set
