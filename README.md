@@ -26,7 +26,7 @@ Minimalistic environment using OpenGL, GLEW, and GLFW for GLSL shader art and im
 - halftone in grayscale with horizontal and vertical dot travel
 - halftone in color (rgb) with dot travel and angle offset
 - kuwahara filter
-- palette quantization to specified color palette
+- color quantization to specified color palette
 - luminance quantization with color preservation using value from hsv mapped colors
 - ordered dithering with 2x2 threshold map with equaly spaced color palette
  
