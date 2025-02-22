@@ -12,7 +12,7 @@
 #include "Shader.h"
 #include "Texture.h"
 #include "VertexArray.h"
-
+#include "FrameBuffer.h"
 
 #define WINDOW_HEIGHT 600
 #define WINDOW_WIDTH 600
@@ -47,7 +47,8 @@ int main(void)
     glDebugMessageCallback(messageCallback, 0);
 
 
-    float possitions[] = { // (pos.xy, text.xy)
+    float possitions[] = { 
+    //   position     texture
         -1.0f, -1.0f, 0.f, 0.0f,
          1.0f, -1.0f, 1.f, 0.0f,
          1.0f,  1.0f, 1.f, 1.0f,
@@ -64,7 +65,8 @@ int main(void)
     
     //-----------------------------------------------------------------------
     std::string default_vert = "res/shaders/vertex/default.shader";
-    
+    std::string default_frag = "res/shaders/fragment/default.shader";
+
     std::string mandelbrot = "res/shaders/fragment/mandelbrot_set.shader";
     std::string julia = "res/shaders/fragment/julia_set.shader";
     std::string sphere = "res/shaders/fragment/sphere.shader";
@@ -76,36 +78,15 @@ int main(void)
     std::string palette = "res/shaders/fragment/filters/palette_quantization.shader";
     std::string luminacence = "res/shaders/fragment/filters/luminacence_quantization.shader";
     std::string dithering= "res/shaders/fragment/filters/dithering.shader";
-
-    std::string default_frag = "res/shaders/fragment/default.shader";
     //-----------------------------------------------------------------------
 
-    Shader shader(default_vert, default_frag);
-    Shader post_shader(default_vert, halftone);
-    Texture texture("res/textures/test.png");
-
-
-    unsigned int fbo;
-    glGenFramebuffers(1, &fbo);
-    glBindFramebuffer(GL_FRAMEBUFFER, fbo);
-
-    unsigned int frame_buffer_texture;
-    glGenTextures(1, &frame_buffer_texture);
-    glBindTexture(GL_TEXTURE_2D, frame_buffer_texture);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, WINDOW_WIDTH, WINDOW_HEIGHT, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, frame_buffer_texture, 0);
-
-    unsigned int rbo;
-    glGenRenderbuffers(1, &rbo);
-    glBindRenderbuffer(GL_RENDERBUFFER, rbo);
-    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_STENCIL, WINDOW_WIDTH, WINDOW_HEIGHT);
-    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo);
+    Shader shader(default_vert, julia);
+    Shader post_shader(default_vert, dithering);
     
-
+    Texture texture("res/textures/test.png");
+    
+    FrameBuffer fbo(WINDOW_WIDTH, WINDOW_HEIGHT);
+    
     shader.Bind();
     shader.SetUniform2f("u_resolution", float(WINDOW_WIDTH), float(WINDOW_HEIGHT));
     Renderer renderer(shader, vao, ibo);
@@ -129,13 +110,13 @@ int main(void)
         glfwGetCursorPos(window, &mousexpos, &mouseypos);
         shader.SetUniform2f("u_mouse", mousexpos, mouseypos);
         
-        glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+        fbo.Bind();
         glClear(GL_COLOR_BUFFER_BIT);
         
         renderer.draw();
 
         post_shader.Bind();        
-        glBindTexture(GL_TEXTURE_2D, frame_buffer_texture);
+        fbo.BindTexture();
         post_shader.SetUniform1i("u_texture", 0);
         post_shader.SetUniform1f("u_time", t1);
         post_shader.SetUniform2f("u_mouse", mousexpos, mouseypos);
